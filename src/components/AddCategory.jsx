@@ -1,30 +1,33 @@
 import React, { useState } from 'react'
 
-export const AddCategory = ({ setCategories }) => {
-  const [inputValue, setInputValue] = useState();
+export const AddCategory = ({ onNewCategory }) => {
+  const [inputValue, setInputValue] = useState(''); //Esto no puede ser undefined
 
-  const handleInputChange = ({ target }) => {
+  const onInputChange = ({ target }) => {
     setInputValue(target.value);
   }
 
-  const handleFormSubmit = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
-    if (inputValue.trim().length <= 1) return;
+    const newCategory = inputValue.trim();
+    
+    if (newCategory.length <= 1) return;
 
     // De esta forma obtengo las categorias anteriores y hago el spread en un nuevo array
-    setCategories(categories => [...categories, inputValue])
+    // setCategories(categories => [...categories, inputValue])
+    onNewCategory(newCategory);
 
     //Limpio el input
     setInputValue('');
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={onFormSubmit}>
       <input
         type="text"
         placeholder=" Buscar gif"
         value={inputValue}
-        onChange={handleInputChange}
+        onChange={onInputChange}
       />
     </form>
   )
