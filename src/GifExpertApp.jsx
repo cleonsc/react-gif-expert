@@ -7,6 +7,8 @@ export const GifExpertApp = () => {
   const onAddCategory = (newCategory) => {
     //add valorant
     // setCategories([...categories, 'Valorant']);
+    // Validamos si la nueva categoria ya existe en el arreglo
+    if (categories.includes(newCategory)) return;
     setCategories([...categories, newCategory]);
   }
   return (
@@ -22,8 +24,8 @@ export const GifExpertApp = () => {
       {/* gif list */}
       <ol>
         {/* gif item */}
-        {categories.map((category, index) => {
-          return <li key={index}>{category}</li>
+        {categories.map((category) => {
+          return <li key={category}>{category}</li>
         })}
       </ol>
     </>
