@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState(''); //Esto no puede ser undefined
@@ -31,4 +32,8 @@ export const AddCategory = ({ onNewCategory }) => {
       />
     </form>
   )
+}
+
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
 }
