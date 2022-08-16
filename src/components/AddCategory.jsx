@@ -11,7 +11,7 @@ export const AddCategory = ({ onNewCategory }) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     const newCategory = inputValue.trim();
-    
+
     if (newCategory.length <= 1) return;
 
     // De esta forma obtengo las categorias anteriores y hago el spread en un nuevo array
